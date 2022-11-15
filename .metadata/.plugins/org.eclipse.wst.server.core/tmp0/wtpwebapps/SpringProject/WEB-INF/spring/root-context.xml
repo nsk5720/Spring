@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- for mysql -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<!-- 
+			spring_mvc: DB명 
+			Universal Time : UTC
+			 보안 접속은 하지 않으며(useSSL=false)
+			&amp; => 변수 연결
+			UTF-8 인코딩을 사용
+		-->
+		<property name="url"				
+			value="jdbc:mysql://localhost:3306/spring_mvc?serverTimezone=UTC&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+		<!--  
+			DB사용 권한이 있는 유저 name과 password
+		-->
+		<property name="username" value="spring_mvc_user" />
+		<property name="password" value="1234" />
+	</bean>
+		<!--
+			sqlSessionFactory: 데이터베이스와 연결을 맺고 끊어질 때까지의 라이프 사이클을 관리하는 sqlSession객체
+			property 1. DB소스 설정(데이터소스 설정하는 곳) 2. DB위치(매퍼 파일의 위치를 설정) => 스프링에 알려주는 것 // 그대로 복사해서 사용
+		-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:/sqlmap/**/*_SQL.xml" />
+	</bean>
+		<!--
+			sqlSessionTemplate: 데이터베이스에서 개별적으로 쿼리를 실행하는 객체
+		-->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>			
+</beans>
