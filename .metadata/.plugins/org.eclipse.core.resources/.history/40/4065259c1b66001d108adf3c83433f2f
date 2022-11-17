@@ -1,0 +1,10 @@
+package com.nsk.spring;
+
+import org.springframework.stereotype.Repository;
+
+/*데이터베이스에 접근하는 클래스임을 명시*/
+/*스프링이 데이터베이스를 관리하는 클래스라고 인지해서 자바 빈(java bean)으로 등록해서 관리*/
+@Repository
+public class BookDao {
+
+}

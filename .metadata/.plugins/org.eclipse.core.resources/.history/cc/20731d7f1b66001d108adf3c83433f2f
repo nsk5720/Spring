@@ -1,0 +1,9 @@
+package com.nsk.spring;
+
+import org.springframework.stereotype.Repository;
+
+/*데이터베이스에 접근하는 클래스임을 명시*/
+@Repository
+public class BookDao {
+
+}
