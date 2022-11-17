@@ -1,0 +1,6 @@
+package com.nsk.spring;
+
+@Service
+public class BookServiceImpl implements BookService{	//BookService는 인터페이스 (메소드만 가지고 있는)
+
+}

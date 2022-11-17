@@ -1,0 +1,25 @@
+package com.nsk.spring;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/* 스프링에 서비스 클래스임을 알려준다 */
+@Service
+public class BookServiceImpl implements BookService{	//BookService는 인터페이스 (메소드만 가지고 있는)
+	@Autowired
+	BookDao bookdao;
+	/* 데이터베이스 접근을 위해 BookDao 인스턴스를 주입 */
+	
+	@Override
+	public String create(Map<String, Object>map) {
+		// BookDao.Insert 메서드 실행 // map은 우리가 넣은 데이터를 BookDao.Insert 메서드에 던짐
+		// affectRowCount 변수에는 영향받은 행 수가 담긴다. 무조건 1이며 입력하지 않은 경우(장난치는경우)에는 0임
+		int affectRowCount = this.bookdao.insert(map);	// affectRowCount = 라이브러리 = 영향을 받은 행수
+		if(affectRowCount == 1) {
+			return map.get("book_id").toString();
+		}
+		return null;
+	}
+}

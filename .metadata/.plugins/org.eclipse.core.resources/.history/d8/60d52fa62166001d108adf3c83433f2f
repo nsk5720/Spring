@@ -1,0 +1,5 @@
+package com.nsk.spring;
+
+public interface BookService {
+
+}

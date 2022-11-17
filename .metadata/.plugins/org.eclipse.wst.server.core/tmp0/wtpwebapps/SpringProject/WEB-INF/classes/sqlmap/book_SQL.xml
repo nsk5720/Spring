@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 항목은 쿼리가 여러개 일 때 이름 공간(분리하는 역할):  XML파일은 보통 여러개 생성되기 때문에 이를 구별하는 용도 -->
+<mapper namespace="book">
+    <insert id="insert" parameterType="hashMap"
+        useGeneratedKeys="true" keyProperty="book_id"> 
+        <![CDATA[
+        insert into book
+            (title, category, price) 
+        values
+            (#{title}, #{category}, #{price})
+        ]]>
+    </insert>
+</mapper>

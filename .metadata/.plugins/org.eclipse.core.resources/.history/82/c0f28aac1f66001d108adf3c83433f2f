@@ -15,7 +15,6 @@ public class BookDao {
 	/* 매퍼 XML(book_SQL.xml)을 실행시키기 위해서 SqlSessionTemplate 객체를 멤버 변수로 선언 */
 
 	public int insert(Map<String, Object> map) {
-		return this.sqlSessionTemplate.insert("book.insert", map);	
-		//book.insert => book_SQL.xml에 있는 namespace="book" 밑에 있는 id=insert
+		return this.sqlSessionTemplate.insert("book.insert", map);
 	}
 }

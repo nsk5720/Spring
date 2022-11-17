@@ -40,11 +40,9 @@ public class BookController {
 		
 		String bookId = this.bookService.create(map);
 		// 데이터입력에 실패했을 경우 redirect한다. redirect: 원래 페이지로 되돌아가기
-		// 데이터입력이 실패일 경우 다시 데이터를 입력받아야 하므로 생성 화면으로 리다이렉트
 		if (bookId == null) {
 			mav.setViewName("redirect:/create");
 		} else {
-			// 데이터 입력이 성공하면 상세페이지로 이동
 			mav.setViewName("redirect:/detail?bookId=" + bookId);
 		}
 		return mav;

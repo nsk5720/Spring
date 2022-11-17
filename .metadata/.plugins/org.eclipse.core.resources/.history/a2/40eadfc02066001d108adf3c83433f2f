@@ -1,0 +1,9 @@
+package com.nsk.spring;
+
+import org.springframework.stereotype.Service;
+
+/* 스프링에 서비스 클래스임을 알려준다 */
+@Service
+public class BookServiceImpl implements BookService{	//BookService는 인터페이스 (메소드만 가지고 있는)
+	
+}
