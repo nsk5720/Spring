@@ -23,4 +23,9 @@ public class BookServiceImpl implements BookService{	//BookService는 인터페이스 
 		}
 		return null;
 	}
+	
+	@Override
+	public Map<String, Object> detail(Map<String, Object>map){
+		return this.bookdao.selectDetail(map);
+	}
 }

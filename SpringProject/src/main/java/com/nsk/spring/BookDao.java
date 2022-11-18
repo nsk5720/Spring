@@ -18,4 +18,8 @@ public class BookDao {
 		return this.sqlSessionTemplate.insert("book.insert", map);	
 		//book.insert => book_SQL.xml에 있는 namespace="book" 밑에 있는 id=insert
 	}
+	
+	public Map<String, Object> selectDetail(Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectOne("book.select_detail", map);
+	}
 }

@@ -11,6 +11,21 @@
             (#{title}, #{category}, #{price})
         ]]>
     </insert>
+    <!-- insert와 select는 mybatis에서 인식하는 태그/명령어 임 -->
+    <!-- resultType은 결과물도 hashmap으로 -->
+    <select id="select_detail" parameterType="hashMap" resultType="hashMap">         
+        <![CDATA[
+        select
+            title,
+            category,
+            price,
+            insert_date
+        from
+        	book
+        where
+            book_id = #{bookId}
+        ]]>
+    </select>
 </mapper>
 
 <!-- 
